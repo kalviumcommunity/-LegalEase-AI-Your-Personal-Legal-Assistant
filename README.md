@@ -1,40 +1,31 @@
- LegalEase AI – The Smarter Way to Navigate Law:_
+🧠 Project Concept
+LegalEase AI is an AI-powered personal legal assistant designed to help users:
 
-LegalEase AI is an intelligent, AI-powered legal assistant built on the foundation of large language models (LLMs). It helps users with legal research, contract drafting, understanding legal jargon, and answering complex law-related questions. By leveraging techniques like prompt engineering, function calling, structured outputs, and retrieval-augmented generation (RAG), LegalEase delivers accurate and context-aware legal support.
+Understand legal terms in simple language
 
- Key Capabilities:-
+Draft contracts and legal documents with smart prompts
 
-System Prompt:
+Simplify legal research using AI and Retrieval-Augmented Generation (RAG)
 
-Establishes the AI’s identity and behavior, ensuring consistent professionalism.
-Example: "You are a knowledgeable and concise legal assistant. Maintain a formal tone and provide detailed legal insights."
+Provide personalized explanations using Function Calling and Prompt Engineering
 
-User Prompt:
+🚀 Features Implemented
+Prompting: Smart prompts designed to gather legal context and help generate accurate, tailored responses
 
-Captures the user's request or query.
-Example: "What are the legal implications of breaking a lease early?"
+Structured Output: Legal document drafts and explanations are generated in a well-structured JSON or text format for easy formatting/export
 
-This dual-prompt design guarantees clear communication and expert-level responses.
+Function Calling: OpenAI's function calling is used to let the model retrieve legal definitions, draft contracts, or summarize court rulings
 
- Prompt Tuning Parameters:-
-temperature: Adjusts the randomness of outputs. Lower values (0.2–0.5) prioritize accuracy and legal precision.
+RAG (Retrieval-Augmented Generation): Integrates external legal databases to fetch relevant laws or case summaries to enhance response accuracy
 
-top_p: Tunes the creativity vs. dependability balance.
+📦 Tech Stack
+Frontend: React.js / Next.js (for UI)
 
-max_tokens: Sets a response length limit, useful when handling large documents.
+Backend: Node.js + Express.js (for API calls)
 
-frequency_penalty & presence_penalty: Prevent repetitive content and encourage fresh, relevant details.
+AI: OpenAI’s GPT APIs with Function Calling & RAG
 
+Database: MongoDB (for storing user queries, drafts)
 
- Organized & Structured Replies:-
-LegalEase delivers well-formatted, structured data when needed, improving readability and usability. For example:
+Deployment: Vercel (Frontend), Render (Backend)
 
-json
-Copy
-Edit
-{
-  "term": "Memorandum of Understanding (MoU)",
-  "meaning": "A non-binding agreement outlining mutual intentions.",
-  "common_use_cases": ["Business negotiations", "Joint ventures"],
-  "key_elements": ["Intent", "Scope", "Termination clause"]
-}
