@@ -20,6 +20,7 @@ async function runZeroShot() {
   });
 
   console.log("Zero-Shot Output:\n", response.choices[0].message.content);
+  console.log("Tokens used:", response.usage);
 }
 
 async function runOneShot() {
@@ -39,6 +40,7 @@ Now, write a short poem about a cat exploring the moon.`;
   });
 
   console.log("One-Shot Output:\n", response.choices[0].message.content);
+  console.log("Tokens used:", response.usage);
 }
 
 async function runMultiShot() {
@@ -60,6 +62,7 @@ Now, translate this sentence: "I love learning new languages."`;
   });
 
   console.log("Multi-Shot Output:\n", response.choices[0].message.content);
+  console.log("Tokens used:", response.usage);
 }
 
 async function runStructuredOutput() {
@@ -85,6 +88,7 @@ Example output:
   const content = response.choices[0].message.content;
 
   console.log("Structured Output:\n", content);
+  console.log("Tokens used:", response.usage);
 
   // Optionally, parse JSON (if confident output is valid JSON)
   try {
@@ -104,7 +108,9 @@ async function runDynamicPrompt(userName, favoriteColor) {
   });
 
   console.log("Dynamic Prompt Output:\n", response.choices[0].message.content);
+  console.log("Tokens used:", response.usage);
 }
+
 async function runFunctionCalling() {
   const tools = [
     {
@@ -131,11 +137,13 @@ async function runFunctionCalling() {
   }
 
   const response = await client.chat.completions.create({
-    model: "openai/gpt-3.5-turbo",
+    model: "gpt-3.5-turbo-0613",
     messages: [{ role: "user", content: "What time is it in New York?" }],
     tools,
     tool_choice: "auto"
   });
+
+  console.log("Tokens used:", response.usage);
 
   const message = response.choices[0].message;
 
@@ -149,11 +157,10 @@ async function runFunctionCalling() {
   }
 }
 
-
 // Call the function you want to run:
-//runZeroShot();
+ runZeroShot();
 // runOneShot();
-//runMultiShot();
-//runStructuredOutput();
-//runDynamicPrompt("Alice", "blue");
-runFunctionCalling();
+// runMultiShot();
+// runStructuredOutput();
+// runDynamicPrompt("Alice", "blue");
+//runFunctionCalling();
