@@ -95,10 +95,22 @@ Example output:
   }
 }
 
+async function runDynamicPrompt(userName, favoriteColor) {
+  const prompt = `Write a friendly greeting for a person named ${userName} who loves the color ${favoriteColor}.`;
+
+  const response = await client.chat.completions.create({
+    model: "openai/gpt-3.5-turbo",
+    messages: [{ role: "user", content: prompt }]
+  });
+
+  console.log("Dynamic Prompt Output:\n", response.choices[0].message.content);
+}
+
 
 
 // Call the function you want to run:
 //runZeroShot();
 // runOneShot();
 //runMultiShot();
-runStructuredOutput();
+//runStructuredOutput();
+runDynamicPrompt("Alice", "blue");
