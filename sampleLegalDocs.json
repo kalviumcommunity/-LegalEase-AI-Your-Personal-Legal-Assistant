@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Non-Disclosure Agreement",
+    "type": "Contract",
+    "summary": "An NDA prevents parties from disclosing confidential information to third parties.",
+    "keyClauses": [
+      "Confidentiality",
+      "Non-use",
+      "Term & Termination"
+    ]
+  },
+  {
+    "title": "Employment Agreement",
+    "type": "Contract",
+    "summary": "Outlines employment terms, responsibilities, and conditions of termination.",
+    "keyClauses": [
+      "Job Duties",
+      "Compensation",
+      "Termination Clause"
+    ]
+  }
+]
