@@ -41,6 +41,29 @@ Now, write a short poem about a cat exploring the moon.`;
   console.log("One-Shot Output:\n", response.choices[0].message.content);
 }
 
+async function runMultiShot() {
+  const prompt = `Translate the following English sentences into French:
+
+Example 1:  
+Input: "Good morning."  
+Output: "Bonjour."
+
+Example 2:  
+Input: "How are you?"  
+Output: "Comment ça va ?"
+
+Now, translate this sentence: "I love learning new languages."`;
+
+  const response = await client.chat.completions.create({
+    model: "openai/gpt-3.5-turbo",
+    messages: [{ role: "user", content: prompt }]
+  });
+
+  console.log("Multi-Shot Output:\n", response.choices[0].message.content);
+}
+
+
 // Call the function you want to run:
 //runZeroShot();
- runOneShot();
+// runOneShot();
+runMultiShot();
