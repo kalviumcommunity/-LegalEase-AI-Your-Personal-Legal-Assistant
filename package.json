@@ -1,3 +1,25 @@
 {
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "openai": "^5.12.2"
+  },
+  "name": "gen-ai",
+  "version": "1.0.0",
+  "description": "🧠 Project Concept\r LegalEase AI is an AI-powered personal legal assistant designed to help users:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalviumcommunity/-LegalEase-AI-Your-Personal-Legal-Assistant.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kalviumcommunity/-LegalEase-AI-Your-Personal-Legal-Assistant/issues"
+  },
+  "homepage": "https://github.com/kalviumcommunity/-LegalEase-AI-Your-Personal-Legal-Assistant#readme"
 }
