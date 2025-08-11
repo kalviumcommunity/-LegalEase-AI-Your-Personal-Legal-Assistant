@@ -105,7 +105,49 @@ async function runDynamicPrompt(userName, favoriteColor) {
 
   console.log("Dynamic Prompt Output:\n", response.choices[0].message.content);
 }
+async function runFunctionCalling() {
+  const tools = [
+    {
+      name: "getCurrentTime",
+      type: "function",
+      description: "Get the current time in a given city",
+      parameters: {
+        type: "object",
+        properties: {
+          city: {
+            type: "string",
+            description: "Name of the city to get time for"
+          }
+        },
+        required: ["city"]
+      },
+      function: "function getCurrentTime(city) { const date = new Date(); return `The current time in ${city} is ${date.toUTCString()}`; }"
+    }
+  ];
 
+  function getCurrentTime(city) {
+    const date = new Date();
+    return `The current time in ${city} is ${date.toUTCString()}`;
+  }
+
+  const response = await client.chat.completions.create({
+    model: "openai/gpt-3.5-turbo",
+    messages: [{ role: "user", content: "What time is it in New York?" }],
+    tools,
+    tool_choice: "auto"
+  });
+
+  const message = response.choices[0].message;
+
+  if (message.tool_call) {
+    const args = JSON.parse(message.tool_call.arguments);
+    const result = getCurrentTime(args.city);
+
+    console.log("Tool calling output:\n", result);
+  } else {
+    console.log("Model response:\n", message.content);
+  }
+}
 
 
 // Call the function you want to run:
@@ -113,4 +155,5 @@ async function runDynamicPrompt(userName, favoriteColor) {
 // runOneShot();
 //runMultiShot();
 //runStructuredOutput();
-runDynamicPrompt("Alice", "blue");
+//runDynamicPrompt("Alice", "blue");
+runFunctionCalling();
