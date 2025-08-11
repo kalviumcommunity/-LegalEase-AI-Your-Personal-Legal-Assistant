@@ -62,8 +62,43 @@ Now, translate this sentence: "I love learning new languages."`;
   console.log("Multi-Shot Output:\n", response.choices[0].message.content);
 }
 
+async function runStructuredOutput() {
+  const prompt = `Write a short poem about a cat exploring the moon.
+Return the output in JSON format with fields:
+- title: string
+- poem: string
+- author: string (use "AI Poet")
+
+Example output:
+{
+  "title": "Cat on the Moon",
+  "poem": "The cat leaps high, chasing lunar beams, ...",
+  "author": "AI Poet"
+}`;
+
+  const response = await client.chat.completions.create({
+    model: "openai/gpt-3.5-turbo",
+    messages: [{ role: "user", content: prompt }],
+    temperature: 0.7
+  });
+
+  const content = response.choices[0].message.content;
+
+  console.log("Structured Output:\n", content);
+
+  // Optionally, parse JSON (if confident output is valid JSON)
+  try {
+    const json = JSON.parse(content);
+    console.log("\nParsed JSON object:", json);
+  } catch (e) {
+    console.error("Failed to parse JSON:", e.message);
+  }
+}
+
+
 
 // Call the function you want to run:
 //runZeroShot();
 // runOneShot();
-runMultiShot();
+//runMultiShot();
+runStructuredOutput();
